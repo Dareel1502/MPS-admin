@@ -1,17 +1,27 @@
-import { useState } from 'react'
-
-import './App.css'
-import Dashboard from './pages/Dashboard'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import NavBar from './components/NavBar';
+import Dashboard from './pages/Dashboard';
+import Monitoring from './pages/Monitoring';
+import Map from './pages/Map';
+import ReportManagement from './pages/ReportManagement';
+import UserManagement from './pages/UserManagement';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-   <div>
-   <Dashboard/>
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/monitoring" element={<Monitoring />} />
+        <Route path="/user-management" element={<UserManagement />} />
+        <Route path="/report-management" element={<ReportManagement />} />
+        <Route path="/map" element={<Map />} />
+        <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
-   </div>
-  )
+      </Routes>
+     
+    </Router>
+  );
 }
 
-export default App
+export default App;
