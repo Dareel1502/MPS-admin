@@ -1,10 +1,15 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import NavBar from './components/NavBar';
-import Dashboard from './pages/Dashboard';
-import Monitoring from './pages/Monitoring';
-import Map from './pages/Map';
-import ReportManagement from './pages/ReportManagement';
-import UserManagement from './pages/UserManagement';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import NavBar from "./components/NavBar";
+import Dashboard from "./pages/Dashboard";
+import Monitoring from "./pages/Monitoring";
+import Map from "./components/Map";
+import ReportManagement from "./pages/ReportManagement";
+import UserManagement from "./pages/UserManagement";
 
 function App() {
   return (
@@ -17,9 +22,7 @@ function App() {
         <Route path="/report-management" element={<ReportManagement />} />
         <Route path="/map" element={<Map />} />
         <Route path="/" element={<Navigate to="/dashboard" replace />} />
-
       </Routes>
-     
     </Router>
   );
 }
