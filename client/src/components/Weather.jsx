@@ -6,6 +6,12 @@ const Weather = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const profileRef = useRef(null);
 
+  const weatherData = {
+    temperature: 22,
+    condition: "Partly Cloudy",
+    icon: "🌤️",
+  };
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -31,86 +37,21 @@ const Weather = () => {
     <nav className="bg-gray-800 text-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex-shrink-0 flex items-center">
-            <svg
-              className="h-8 w-8 text-blue-400"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"
-              />
-            </svg>
-            <span className="ml-2 text-xl font-bold">Admin Dashboard</span>
-          </div>
+          <div className="flex justify-end w-full mt-2">
+            <div className="justify-between items-start ">
+              <div>
+                <h2 className="text-xl font-semibold text-white">
+                  Weather Conditions
+                </h2>
+              </div>
+              <span className="text-4xl">{weatherData.icon}</span>
+            </div>
 
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                    isActive
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white"
-                  }`
-                }
-              >
-                Dashboard
-              </NavLink>
-              <NavLink
-                to="/monitoring"
-                className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                    isActive
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white"
-                  }`
-                }
-              >
-                Monitoring
-              </NavLink>
-              <NavLink
-                to="/user-management"
-                className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                    isActive
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white"
-                  }`
-                }
-              >
-                User Management
-              </NavLink>
-              <NavLink
-                to="/report-management"
-                className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                    isActive
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white"
-                  }`
-                }
-              >
-                Report Management
-              </NavLink>
-              <NavLink
-                to="/map"
-                className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                    isActive
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white"
-                  }`
-                }
-              >
-                Map
-              </NavLink>
+            <div className="flex justify-between ">
+              <div className="text-4xl font-bold text-white">
+                {weatherData.temperature}°C
+              </div>
+              <div className="text-white mt-2">{weatherData.condition}</div>
             </div>
           </div>
 
@@ -208,76 +149,6 @@ const Weather = () => {
                 )}
               </button>
             </div>
-          </div>
-        </div>
-
-        <div className={`md:hidden ${isMobileMenuOpen ? "block" : "hidden"}`}>
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-800">
-            <NavLink
-              to="/"
-              onClick={toggleMobileMenu}
-              className={({ isActive }) =>
-                `block px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
-                  isActive
-                    ? "bg-gray-900 text-white"
-                    : "text-gray-300 hover:bg-gray-700 hover:text-white"
-                }`
-              }
-            >
-              Dashboard
-            </NavLink>
-            <NavLink
-              to="/monitoring"
-              onClick={toggleMobileMenu}
-              className={({ isActive }) =>
-                `block px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
-                  isActive
-                    ? "bg-gray-900 text-white"
-                    : "text-gray-300 hover:bg-gray-700 hover:text-white"
-                }`
-              }
-            >
-              Monitoring
-            </NavLink>
-            <NavLink
-              to="/user-management"
-              onClick={toggleMobileMenu}
-              className={({ isActive }) =>
-                `block px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
-                  isActive
-                    ? "bg-gray-900 text-white"
-                    : "text-gray-300 hover:bg-gray-700 hover:text-white"
-                }`
-              }
-            >
-              User Management
-            </NavLink>
-            <NavLink
-              to="/report-management"
-              onClick={toggleMobileMenu}
-              className={({ isActive }) =>
-                `block px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
-                  isActive
-                    ? "bg-gray-900 text-white"
-                    : "text-gray-300 hover:bg-gray-700 hover:text-white"
-                }`
-              }
-            >
-              Report Management
-            </NavLink>
-            <NavLink
-              to="/map"
-              onClick={toggleMobileMenu}
-              className={({ isActive }) =>
-                `block px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
-                  isActive
-                    ? "bg-gray-900 text-white"
-                    : "text-gray-300 hover:bg-gray-700 hover:text-white"
-                }`
-              }
-            >
-              Map
-            </NavLink>
           </div>
         </div>
       </div>
